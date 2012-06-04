@@ -51,7 +51,7 @@
             this.element = element;
             this.options = $.extend( {}, defaults, options) ;
             /* Register custom validators */
-            if(options.validators)
+            if(options !== undefined && typeof(options.validators) != 'undefined')
                 $.extend( validators, options.validators); 
             this._defaults = defaults;
             this._name = pluginName;
@@ -59,13 +59,14 @@
             this.init();
         }
 
-        /* */
+        /* Gets the value of an element */
         function getElementValue(element) {
             if(element.is('input') || element.is('textarea')) {
                 return $.trim(element.val());
             }
         }
 
+		/* Creates a validation handler */
         function createValidator(validatorType, element) {
             return function() {
                 return validators[validatorType](element);

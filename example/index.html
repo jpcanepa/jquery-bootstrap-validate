@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script src="../plugin/jquery.bootstrap-validate.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Form validation test</h1>
+
+		<form id="name-form" action="#" method="POST">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label" for="nombre">Nombre</label>
+					<div class="controls">
+						<input name="nombre" data-validator="non-empty"></input>
+						<span class="help-inline">Help!</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="contenido">Nombre</label>
+					<div class="controls">
+						<textarea name="contenido" data-validator="non-empty"></textarea>
+						<span class="help-inline">Help!</span>
+					</div>
+				</div>
+				<input type="submit" />
+			</fieldset>
+		</form>
+
+		<div id='error-console'>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready( 
+			function () {
+				$('#name-form').validator();
+			}
+		);
+	</script>
+</body>
+</html>

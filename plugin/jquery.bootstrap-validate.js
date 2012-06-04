@@ -14,7 +14,6 @@
     // Create the defaults once
     var pluginName = 'validator',
     defaults = {
-        propertyName: "value"
     };
 
     // The actual plugin constructor

@@ -24,25 +24,40 @@
                 return getElementValue(element).length > 0
             },
             'is-number' : function (element) {
-                try {
-                    var intVal = parseInt(getElementValue(element), 10);
+                if(getElementValue(element).length > 0) {
+                    try {
+                        var intVal = parseInt(getElementValue(element), 10);
+                        return true;
+                    } catch (e) {
+                        return false;
+                    }
+                }
+                else {
                     return true;
-                } catch (e) {
-                    return false;
                 }
             },
             'non-negative' : function (element) {
-                try {
-                    return parseInt(getElementValue(element), 10) >= 0; 
-                } catch (e) {
-                    return false;
+                if(getElementValue(element).length > 0) {
+                    try {
+                        return parseInt(getElementValue(element), 10) >= 0; 
+                    } catch (e) {
+                        return false;
+                    }
+                }
+                else {
+                    return true;
                 }
             },
             'positive' : function (element) {
-                try {
-                    return parseInt(getElementValue(element), 10) > 0; 
-                } catch (e) {
-                    return false;
+                if(getElementValue(element).length > 0) {
+                    try {
+                        return parseInt(getElementValue(element), 10) > 0; 
+                    } catch (e) {
+                        return false;
+                    }
+                }
+                else {
+                    return true;
                 }
             }
         };
@@ -70,7 +85,16 @@
 		/* Creates a validation handler */
         function createValidator(validatorType, element) {
             return function() {
-                return validators[validatorType](element);
+                var validatorArray = validatorType.split(" "),
+                    ready = true;
+                
+                $.each(validatorArray, function (index, validator) {
+                        if(!validators[validator](element)) {                        
+                            ready = false;
+                            return false;
+                        }
+                });
+                return ready;
             }
         }
 

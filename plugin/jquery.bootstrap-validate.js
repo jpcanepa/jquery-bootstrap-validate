@@ -15,6 +15,7 @@
         var pluginName = 'validator',
             /* Default options */
         defaults = {
+            'errorMessageClass' : 'help-inline'
         },
 
         /* All validators */
@@ -86,8 +87,15 @@
                 that.fields.each(function (index, element) {
                         var e = $(element);
                         element.doValidation = createValidator(e.attr('data-validator'), e);
+                        
+                        /* Hide error messages from inputs */                        
+                        if(that._defaults.errorMessageClass) {                                                        
+                            e.closest('div.control-group')
+                            .find('.' + that._defaults.errorMessageClass)
+                            .hide();
+                        }
                 });
-
+                
                 /* Handle the form submit action */
                 mainForm.submit(function () {
 
@@ -103,11 +111,25 @@
                                     /* Add the "error" class to the container group */
                                     e.closest('div.control-group')
                                     .addClass('error');
+                                    
+                                    /* Show the error message */
+                                    if(that._defaults.errorMessageClass) {
+                                        e.closest('div.control-group')
+                                        .find('.' + that._defaults.errorMessageClass)
+                                        .show();
+                                    }
                                 }
                                 else {
                                     /* If validation passed, remove the error class */
                                     e.closest('div.control-group')
                                     .removeClass('error');
+                                    
+                                    /* Hide the error message */
+                                    if(that._defaults.errorMessageClass) {
+                                        e.closest('div.control-group')
+                                        .find('.' + that._defaults.errorMessageClass)
+                                        .hide();
+                                    }
                                 }
                             }
                         );

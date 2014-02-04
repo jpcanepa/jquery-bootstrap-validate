@@ -9,41 +9,54 @@
 	<div class="container">
 		<h1>Form validation test</h1>
 
-		<form id="name-form" action="#" method="POST">
+		<form class="form-horizontal" id="name-form" action="#" method="POST">
 			<fieldset>
 				<div class="control-group">
 					<label class="control-label" for="nombre">Non-empty test</label>
 					<div class="controls">
 						<input name="nombre" data-validator="non-empty"></input>
-						<span class="help-inline">Help!</span>
+						<span class="help-inline">Error!</span>
+                        <p class="help-block">Help!</p>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="contenido">Non-empty test</label>
 					<div class="controls">
 						<textarea name="contenido" data-validator="non-empty"></textarea>
-						<span class="help-inline">Help!</span>
+						<span class="help-inline">Error!</span>
+                        <p class="help-block">Help!</p>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="non-negative-test">Non-negative test</label>
 					<div class="controls">
 						<input name="non-negative-test" data-validator="non-negative"></input>
-						<span class="help-inline">Help!</span>
+						<span class="help-inline">Error!</span>
+                        <p class="help-block">Help!</p>
+					</div>
+				</div>
+                <div class="control-group">
+					<label class="control-label" for="non-negative-test">Non-negative test (and non-empty)</label>
+					<div class="controls">
+						<input name="non-negative-test" data-validator="non-empty non-negative"></input>
+						<span class="help-inline">Error!</span>
+                        <p class="help-block">Help!</p>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="positive-test">Positive test</label>
 					<div class="controls">
 						<input name="positive-test" data-validator="positive"></input>
-						<span class="help-inline">Help!</span>
+						<span class="help-inline">Error!</span>
+                        <p class="help-block">Help!</p>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="custom-test">Custom (greater than 10) test</label>
 					<div class="controls">
 						<input name="custom-test" data-validator="greater-than-ten"></input>
-						<span class="help-inline">Help!</span>
+						<span class="help-inline">Error!</span>
+                        <p class="help-block">Help!</p>
 					</div>
 				</div>
 				<input type="submit" />
